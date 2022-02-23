@@ -1,0 +1,117 @@
+    <div *ngIf="afAuth.user | async as user">
+        <header>
+            <nav class="navbar navbar-toggleable-md navbar-expand-lg  mb-5">
+                  <ul class="nav navbar-nav nav-flex-icons ml-auto">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link">
+                            <i class="fas fa-user mx-2"></i> 
+                            <span class="clearfix d-none d-sm-inline-block gray-gradient font-weight-bold">
+                                <!-- {{ user.displayName }} -->
+                                USUARIO MAESTRO
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <button class="btn btn-outline-danger btn-rounded btn-block z-depth-0 waves-effect"
+                          (click)="logout()">
+                          Sign out
+                        </button>
+                    </li>                   
+                </ul>
+            </nav>
+        </header>
+      </div>
+<!-- 
+        <div class="jumbotron text-center z-depth-0 p-4 transparent">
+            <div class="row">
+                <div class="col-md-4 offset-md-1 my-3">
+                    <div class="card card-cascade wider">
+                        <div class="view view-cascade overlay">
+                            <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/photo6.jpg"
+                            alt="Card image cap">
+                            <a href="#!">
+                            <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+                        <div class="card-body card-body-cascade text-center">
+                            <h4 class="card-title"><strong>{{ user.displayName }}</strong></h4>
+                            <h5 class="blue-text pb-2"><strong>{{ user.email }}</strong></h5>
+                            <h5 class="blue-text pb-2"><strong>User ID: {{ user.uid }}</strong></h5>   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+
+    <!-- SECCION AÑADIR -->
+    <div class="form my-5 col-6">
+     <h4> Añadir menú del día: </h4>
+      <form class="mt-3" #formularioPelicula="ngForm" 
+      (ngSubmit)="menuEnviado(dia, entrada, principal, bebida, postre); formularioPelicula.resetForm()">
+        <div class="form-group container">
+          <div class="row">
+            <div class="col-6">
+              <select [(ngModel)]="dia" name="dia" class="form-select form-control-sm"> 
+                <option value="Lunes" selected>Lunes</option>
+                <option value="Martes">Martes</option>
+                <option value="Miercoles">Miercoles</option>
+                <option value="Jueves">Jueves</option>
+                <option value="Viernes">Viernes</option>
+                <option value="Sabado">Sabado</option>
+                <option value="Domingo">Domingo</option>
+              </select>
+            </div>
+            <!-- <div class="col-6">
+              ACA BOTON PROVISIONAL PARA MENSAJE ESPECIAL
+              <button type="submit" (click)="mensajeEspecialFunction()"  
+              class="btn btn-success btn-block btnEspecial">Mensaje especial</button>
+            </div> -->
+          </div>
+          <!-- <div *ngIf="mensajeEspecial">
+            <input [(ngModel)]="mensaje" name="mensaje" type="text" class="form-control mt-2" 
+            placeholder="Escriba el mensaje">
+          </div> -->
+
+          <div *ngIf="mensajeEspecial == false">
+            <input [(ngModel)]="entrada" name="entrada" type="text" class="form-control mt-2" placeholder="Entrada">
+            <input [(ngModel)]="principal" name="principal" type="text" class="form-control mt-2" placeholder="Principal">
+            <input [(ngModel)]="bebida" name="bebida" type="text" class="form-control mt-2" placeholder="Bebida">
+            <input [(ngModel)]="postre" name="postre" type="text" class="form-control my-2" placeholder="Postre">
+          </div>
+          <button type="submit"  class="btn btn-success btn-block">Añadir</button>
+        </div>
+      </form>
+    </div>
+
+    
+  <div class="row menues">
+    <div class="col-4 my-5" *ngFor="let task of arrayMenues">
+      <div class="menuCard">
+        <h5 class="">{{task.dia}}</h5>
+          <p class="">{{task.entrada}} </p>
+          <p>{{task.principal}}</p>
+          <p>{{task.bebida}}</p>
+          <p>{{task.postre}}</p>
+        <button class="btn btn-danger btnEdit" (click)="deleteTask(task)">X</button>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row carta">
+  <h4>Carta</h4>
+</div>
+
+<div class="row">
+  <div class="" *ngFor="let task of arrayCarta; let index">
+    <h5 class="">{{task.plato}}</h5>
+      <p class="">{{task.adicional}} </p>
+      <p>{{task.precio}}</p>
+    <button class="btn btn-danger btnHide" [ngStyle]="{'background-color' : task.hidden ? 'grey' : 'green'}"
+    (click)="ocultar(task.id, task.plato, task.adicional, task.precio, task.hidden)">
+    {{ (task.hidden ? 'Ocultado' : 'Activo') }}
+    </button>
+</div>  
+</div>
