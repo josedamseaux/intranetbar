@@ -1,24 +1,104 @@
-
 .form-select{
     width: 100%;
     padding: 0;
+}
 
+.subtitulo{
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 25px;
+}
+
+.menues{
+    outline: solid   #ecca80 2px !important;
+    margin-bottom: 25px;
+    margin-top: 25px;
 }
 
 .card{
-
     width: 200px;
     height: 20px;
-
 }
-
-
 
 .menuCard{
     text-align: center;
 }
 
-.carta{
-    /* top:700px; */
-    /* position: absolute; */
+.btnEdit{
+    bottom: -30px !important;
+    left: 44%;
 }
+
+@media only screen and (min-width: 1024px){
+
+  .formMenudelDia{
+      width: 70%;
+  }
+
+  .formCarta{
+    width: 70%;
+  }
+  .carta{
+    margin: auto;
+    width: 60%;
+  }
+} 
+
+/* MOBILE L */
+@media only screen and (max-width: 500px){
+    h2{
+        font-size: 15px;
+    }
+
+    .formMenudelDia{
+        font-size: 14px;
+    }
+
+    .menu > .menues >.menuCard > h5{
+        font-size: 15px;
+    }
+
+    .menu > .menues >.menuCard > p{
+       margin-bottom: 5px;
+       font-size: 12px;
+    }
+
+    .menu > .menues >.menuCard{
+        font-size: 14px;
+    }
+
+    .btnEdit{
+        bottom: -35px !important;
+        left: 42%;
+    }
+
+    .carta{
+        margin: auto;
+        width: 70%;
+      }
+
+    .carta > .d-flex > .p-2 > h5, p, button{
+        font-size: 12px;
+    }
+
+  } 
+  
+  
+  
+  /* MOBILE M */
+  @media only screen and (max-width: 425px){
+  
+
+    
+  } 
+  
+  /* MOBILE S */
+  @media only screen and (max-width: 375px){
+    .btnEdit{
+        bottom: -38px !important;
+        left: 39%;
+    }
+    
+    
+  } 
+  

@@ -32,6 +32,29 @@ export class MenuService {
       .then();
   }
 
+
+  async cartaEnviada(plato, precio, categoria, hidden, adicional, alergenos) {
+    //Add the new task to the collection
+    const uid = (await this.afAuth.currentUser).uid;
+    let precioNumber = precio;
+    let precioWithSymbol = precioNumber + ' €'
+    console.log(precioWithSymbol);
+
+    this.db
+      .collection(`${'Carta'}`)
+      .doc()
+      .set({
+        plato: plato,
+        precio: precioWithSymbol,
+        categoria: categoria,
+        hidden: hidden,
+        adicional: adicional,
+        alergenos: alergenos,
+      })
+      .then();
+  }
+
+
   async deleteMenu(id) {
     const uid = (await this.afAuth.currentUser).uid;
     this.taskDoc = this.db

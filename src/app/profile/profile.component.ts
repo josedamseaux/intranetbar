@@ -103,7 +103,7 @@ export class ProfileComponent implements OnInit {
     if (dia == 'Martes') {
       idOrder = 6;
     }
-    if (dia == 'Miercoles') {
+    if (dia == 'Miércoles') {
       idOrder = 5;
     }
     if (dia == 'Jueves') {
@@ -112,7 +112,7 @@ export class ProfileComponent implements OnInit {
     if (dia == 'Viernes') {
       idOrder = 3;
     }
-    if (dia == 'Sabado') {
+    if (dia == 'Sábado') {
       idOrder = 2;
     }
     if (dia == 'Domingo') {
@@ -130,12 +130,31 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+
+  plato;
+  precio;
+  categoria;
+  hidden;
+  adicional;
+  alergenos;
+
+  cartaEnviado(plato, precio, categoria, hidden, adicional, alergenos){
+    this.menuService.cartaEnviada(
+      plato,
+      precio,
+      categoria,
+      hidden,
+      adicional,
+      alergenos      
+    );
+  }
+
   deleteTask(task) {
     this.taskId = task.id;
     this.menuService.deleteMenu(this.taskId);
   }
 
-  ocultar(taskid, plato, adicional, precio, hidden){
+  ocultar(taskid, hidden){
     this.taskId = taskid;
     let isHidden:boolean = false;
     if (hidden == false){
